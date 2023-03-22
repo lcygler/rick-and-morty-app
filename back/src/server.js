@@ -1,21 +1,22 @@
 const http = require("http");
-const characters = require("./utils/data.js");
+const { getCharById } = require("./controllers/getCharById");
+const { getCharDetail } = require("./controllers/getCharDetail");
 
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  // http://localhost:3001/rickandmorty/character/1
-  if (req.url.includes("rickandmorty/character")) {
-    const characterId = req.url.split("/")[3];
-    const character = characters.find((c) => c.id === parseInt(characterId));
-    res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify(character));
+  if (req.url.includes("onsearch")) {
+    const id = req.url.split("/").at(-1);
+    getCharById(res, id);
+  } else if (req.url.includes("detail")) {
+    const id = req.url.split("/").at(-1);
+    getCharDetail(res, id);
   } else {
-    res.statusCode = 404;
-    res.end("Not found");
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end("Not Found");
   }
 });
 
 server.listen(3001, () => {
-  console.log("Server running on port 3001");
+  console.log("Server is listening on port 3001");
 });
