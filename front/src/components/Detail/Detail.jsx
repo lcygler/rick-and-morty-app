@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { BASE_URL, KEY } from "../../utils/consts";
 import style from "./Detail.module.css";
 
 const Detail = () => {
@@ -8,9 +9,6 @@ const Detail = () => {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    const BASE_URL = "https://be-a-rym.up.railway.app/api";
-    const KEY = "3fa8a28b08d0.7e801b1fd26fde418200";
-
     axios(`${BASE_URL}/character/${detailId}?key=${KEY}`).then((response) => {
       setCharacter(response.data);
     });

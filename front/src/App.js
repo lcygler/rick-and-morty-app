@@ -28,11 +28,22 @@ function App() {
       return window.alert("Duplicate character");
     }
 
-    fetch(`${BASE_URL}/character/${id}?key=${KEY}`)
+    // fetch(`${BASE_URL}/character/${id}?key=${KEY}`)
+    fetch(`${BASE_URL}/character/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
+          // setCharacters((oldChars) => [...oldChars, data]);
+          setCharacters((oldChars) => {
+            if (oldChars.find((character) => character.id === data.id)) {
+              // If character already exists, return the old state
+              window.alert("Duplicate character");
+              return oldChars;
+            } else {
+              // Otherwise, add the new character to the state
+              return [...oldChars, data];
+            }
+          });
         } else {
           window.alert("Unknown error");
         }
