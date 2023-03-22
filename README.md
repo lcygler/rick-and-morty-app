@@ -1,8 +1,6 @@
 #  Rick and Morty App 🌌
 
-Welcome to the Rick and Morty App! 
-
-This is a web application that allows users to explore information about the characters from the popular TV show "Rick and Morty".
+Welcome to the Rick and Morty App! This is a web application that allows users to explore information about the characters from the popular TV show "Rick and Morty".
 
 ## Features
 
