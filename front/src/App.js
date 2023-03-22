@@ -29,18 +29,16 @@ function App() {
     }
 
     // fetch(`${BASE_URL}/character/${id}?key=${KEY}`)
-    fetch(`${BASE_URL}/character/${id}`)
+    fetch(`${BASE_URL}/onsearch/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
           // setCharacters((oldChars) => [...oldChars, data]);
           setCharacters((oldChars) => {
             if (oldChars.find((character) => character.id === data.id)) {
-              // If character already exists, return the old state
               window.alert("Duplicate character");
               return oldChars;
             } else {
-              // Otherwise, add the new character to the state
               return [...oldChars, data];
             }
           });

@@ -9,7 +9,8 @@ const Detail = () => {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    axios(`${BASE_URL}/character/${detailId}?key=${KEY}`).then((response) => {
+    // axios(`${BASE_URL}/character/${detailId}?key=${KEY}`).then((response) => {
+    axios(`${BASE_URL}/detail/${detailId}`).then((response) => {
       setCharacter(response.data);
     });
   }, [detailId]);
