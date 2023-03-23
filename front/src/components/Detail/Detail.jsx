@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { API_BASE_URL, API_KEY } from "../../utils/consts";
+import { API_BASE_URL } from "../../utils/consts";
 import style from "./Detail.module.css";
 
 const Detail = () => {

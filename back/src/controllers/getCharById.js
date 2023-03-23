@@ -1,5 +1,5 @@
-const axios = require("axios");
 const { API_BASE_URL } = process.env;
+const axios = require("axios");
 
 const successHandler = (response, res) => {
   const { id, image, name, gender, species } = response.data;

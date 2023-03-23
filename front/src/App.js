@@ -10,7 +10,7 @@ import {
   Form,
   Nav,
 } from "./components/index";
-import { API_BASE_URL, API_KEY, PASSWORD, USERNAME } from "./utils/consts";
+import { API_BASE_URL, PASSWORD, USERNAME } from "./utils/consts";
 
 function App() {
   const [characters, setCharacters] = useState([]);
