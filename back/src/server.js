@@ -1,3 +1,4 @@
+require("dotenv").config();
 const http = require("http");
 const { getCharById } = require("./controllers/getCharById");
 const { getCharDetail } = require("./controllers/getCharDetail");
@@ -5,11 +6,13 @@ const { getCharDetail } = require("./controllers/getCharDetail");
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  if (req.url.includes("onsearch")) {
-    const id = req.url.split("/").at(-1);
+  const { url } = req;
+
+  if (url.includes("onsearch")) {
+    const id = url.split("/").at(-1);
     getCharById(res, id);
-  } else if (req.url.includes("detail")) {
-    const id = req.url.split("/").at(-1);
+  } else if (url.includes("detail")) {
+    const id = url.split("/").at(-1);
     getCharDetail(res, id);
   } else {
     res.writeHead(404, { "Content-Type": "text/plain" });
