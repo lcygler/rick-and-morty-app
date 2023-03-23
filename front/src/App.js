@@ -10,7 +10,7 @@ import {
   Form,
   Nav,
 } from "./components/index";
-import { BASE_URL, KEY, PASSWORD, USERNAME } from "./utils/consts";
+import { API_BASE_URL, API_KEY, PASSWORD, USERNAME } from "./utils/consts";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -28,8 +28,8 @@ function App() {
       return window.alert("Duplicate character");
     }
 
-    // fetch(`${BASE_URL}/character/${id}?key=${KEY}`)
-    fetch(`${BASE_URL}/onsearch/${id}`)
+    // fetch(`${BASE_URL}/character/${id}?key=${API_KEY}`)
+    fetch(`${API_BASE_URL}/onsearch/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {

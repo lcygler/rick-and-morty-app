@@ -1,4 +1,3 @@
-// import Card from "../Card/Card";
 import { Button, Card } from "../index";
 import style from "./Cards.module.css";
 
