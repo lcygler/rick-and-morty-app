@@ -11,6 +11,7 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 server.use(morgan("dev"));
+
 server.use("/rickandmorty", router);
 server.use("/rickandmorty/fav", favsRouter);
 
