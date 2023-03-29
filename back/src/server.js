@@ -1,25 +1,18 @@
 require("dotenv").config();
-const http = require("http");
-const { getCharById } = require("./controllers/getCharById");
-const { getCharDetail } = require("./controllers/getCharDetail");
+const express = require("express");
+const router = require("./routes/index");
+const morgan = require("morgan");
+const cors = require("cors");
 
-const server = http.createServer((req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+const PORT = process.env.PORT || 3001;
+const server = express();
 
-  const { url } = req;
+server.use(cors());
+server.use(express.json());
+server.use(morgan("dev"));
+server.use("/rickandmorty", router);
+// server.use("/", router);
 
-  if (url.includes("onsearch")) {
-    const id = url.split("/").at(-1);
-    getCharById(res, id);
-  } else if (url.includes("detail")) {
-    const id = url.split("/").at(-1);
-    getCharDetail(res, id);
-  } else {
-    res.writeHead(404, { "Content-Type": "text/plain" });
-    res.end("Not Found");
-  }
-});
-
-server.listen(3001, () => {
-  console.log("Server is listening on port 3001");
+server.listen(PORT, () => {
+  console.log("Server is listening on port " + PORT);
 });
