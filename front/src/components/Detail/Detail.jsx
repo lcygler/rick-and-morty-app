@@ -9,7 +9,6 @@ const Detail = () => {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    // axios(`${API_BASE_URL}/character/${detailId}?key=${API_KEY}`)
     axios(`${API_BASE_URL}/detail/${detailId}`).then((response) => {
       setCharacter(response.data);
     });

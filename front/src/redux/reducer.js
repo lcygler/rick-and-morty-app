@@ -1,6 +1,6 @@
 import {
   ADD_FAVORITE,
-  CLEAR_FAVORITE,
+  CLEAR_FAVORITES,
   FILTER,
   ORDER,
   REMOVE_FAVORITE,
@@ -50,7 +50,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         allCharacters: [...updatedChars],
       };
 
-    case CLEAR_FAVORITE:
+    case CLEAR_FAVORITES:
       return {
         ...state,
         myFavorites: [],

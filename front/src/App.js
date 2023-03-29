@@ -28,12 +28,10 @@ function App() {
       return window.alert("Duplicate character");
     }
 
-    // fetch(`${BASE_URL}/character/${id}?key=${API_KEY}`)
     fetch(`${API_BASE_URL}/onsearch/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
-          // setCharacters((oldChars) => [...oldChars, data]);
           setCharacters((oldChars) => {
             if (oldChars.find((character) => character.id === data.id)) {
               window.alert("Duplicate character");
