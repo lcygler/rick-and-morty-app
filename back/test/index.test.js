@@ -2,21 +2,26 @@ const app = require("../src/app");
 const session = require("supertest");
 const agent = session(app);
 
-describe("Test de RUTAS", () => {
+describe("Routes testing", () => {
   describe("Route: GET rickandmorty/onsearch/:id", () => {
-    it("Responde con status: 200", () => {
+    it("Expect status code 200", () => {
       agent.get("/rickandmorty/onsearch/1").expect(200);
     });
 
-    it('Responde un objeto con las propiedades: "id", "name", "species", "gender" e "image"', () => {
+    it("Expect object with properties: 'id', 'name', 'species', 'gender' and 'image'", () => {
       return agent.get("/rickandmorty/onsearch/1").then((response) => {
-        const expectedProperties = ["id", "name", "species", "gender", "image"];
-        expect(Object.keys(response.body)).toContain(...expectedProperties);
+        expect(Object.keys(response.body)).toContain(
+          "id",
+          "name",
+          "species",
+          "gender",
+          "image"
+        );
       });
     });
 
-    it("Si hay un error responde con status: 500", () => {
-      agent.get("/rickandmorty/onsearch/IDqueNoExiste").expect(500);
+    it("Expect status code 500 for errors", () => {
+      agent.get("/rickandmorty/onsearch/IDThatDoesNotExist").expect(500);
     });
   });
 });
